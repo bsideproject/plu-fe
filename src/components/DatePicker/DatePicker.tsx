@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { useCallback, useEffect, useState } from 'react';
 import DatePickerCalendarView from './DatePickerCalendarView';
 import DatePickerHeader from './DatePickerHeader';
+import DatePickerMonthView from './DatePickerMonthView';
 import DatePickerMove from './DatePickerMove';
 import DatePickerYearView from './DatePickerYearView';
 import GoToCurrentDate from './GoToCurrentDate';
@@ -51,7 +52,7 @@ const DatePicker = (props: DatePickerProps) => {
       </DatePickerMover>
       {mode === VIEW_MODE.calendar && <DatePickerCalendarView date={date} onChange={onChange} />}
       {mode === VIEW_MODE.year && <DatePickerYearView date={date} onChange={onChangeDate} />}
-      {mode === VIEW_MODE.month && null}
+      {mode === VIEW_MODE.month && <DatePickerMonthView date={date} onChange={onChangeDate} />}
       <GoToCurrentDate onClick={onChangeCurrentDate} />
     </Container>
   );

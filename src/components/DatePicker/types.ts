@@ -45,6 +45,8 @@ interface DatePickerYearItemProps extends Pick<DatePickerYearViewProps, 'onChang
   dObject: CustomDate;
 }
 
+interface DatePickerMonthViewProps extends DatePickerYearViewProps {}
+
 interface GoToCurrentDateProps {
   onClick: () => void;
 }
@@ -60,5 +62,6 @@ export type {
   DayContainerProps,
   DatePickerYearViewProps,
   DatePickerYearItemProps,
+  DatePickerMonthViewProps,
   GoToCurrentDateProps,
 };
