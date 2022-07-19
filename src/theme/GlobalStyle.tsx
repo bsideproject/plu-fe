@@ -5,6 +5,9 @@ const GlobalStyle = () => (
   <Global
     styles={css`
       ${emotionReset}
+      * {
+        box-sizing: border-box;
+      }
     `}
   />
 );
