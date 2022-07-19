@@ -1,3 +1,5 @@
+import CustomDate from '@/utils/CustomDate/CustomDate';
+
 const MOVE_MODE = {
   year: 'year',
   month: 'month',
@@ -34,6 +36,15 @@ interface DatePickerCalendarViewProps extends DatePickerProps {}
 
 interface DayContainerProps extends DatePickerCalendarViewProps {}
 
+interface DatePickerYearViewProps {
+  date: Date;
+  onChange: (newDate: Date, modeChabge?: boolean) => void;
+}
+
+interface DatePickerYearItemProps extends Pick<DatePickerYearViewProps, 'onChange'> {
+  dObject: CustomDate;
+}
+
 interface GoToCurrentDateProps {
   onClick: () => void;
 }
@@ -47,5 +58,7 @@ export type {
   DatePickerMoveProps,
   DatePickerCalendarViewProps,
   DayContainerProps,
+  DatePickerYearViewProps,
+  DatePickerYearItemProps,
   GoToCurrentDateProps,
 };

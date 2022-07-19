@@ -1,5 +1,6 @@
 import CustomDate from '@/utils/CustomDate/CustomDate';
 
+// --------------------------------------- calendar
 const zeroTo6 = [0, 1, 2, 3, 4, 5, 6];
 
 const getDayRange = (date: Date) => {
@@ -17,4 +18,22 @@ const getDayRange = (date: Date) => {
   return result;
 };
 
-export { zeroTo6, getDayRange };
+// --------------------------------------- year
+const yearRowsCount = 5;
+const yearColsCount = 4;
+const yearItemCount = yearRowsCount * yearColsCount;
+
+const generatorYears = (value: Date): number[] => {
+  const dObject = new CustomDate(value);
+  const year = dObject.startOf('year').year;
+  const temp = Math.floor((year % 1000) / yearItemCount);
+  const startYear = Math.floor(year / 1000) * 1000 + yearItemCount * temp;
+
+  const result = new Array(yearItemCount).fill(0).map((_, index) => {
+    return startYear + index;
+  });
+
+  return result;
+};
+
+export { zeroTo6, getDayRange, yearColsCount, yearItemCount, generatorYears };

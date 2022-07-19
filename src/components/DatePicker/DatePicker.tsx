@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import DatePickerCalendarView from './DatePickerCalendarView';
 import DatePickerHeader from './DatePickerHeader';
 import DatePickerMove from './DatePickerMove';
+import DatePickerYearView from './DatePickerYearView';
 import GoToCurrentDate from './GoToCurrentDate';
 import { DatePickerProps, MOVE_MODE, ViewMode, VIEW_MODE } from './types';
 
@@ -49,7 +50,7 @@ const DatePicker = (props: DatePickerProps) => {
         <DatePickerMove date={date} onChange={onChangeDate} mode={MOVE_MODE.month} onClick={onChangeMode} />
       </DatePickerMover>
       {mode === VIEW_MODE.calendar && <DatePickerCalendarView date={date} onChange={onChange} />}
-      {mode === VIEW_MODE.year && null}
+      {mode === VIEW_MODE.year && <DatePickerYearView date={date} onChange={onChangeDate} />}
       {mode === VIEW_MODE.month && null}
       <GoToCurrentDate onClick={onChangeCurrentDate} />
     </Container>
