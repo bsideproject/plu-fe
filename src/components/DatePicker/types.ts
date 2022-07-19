@@ -35,6 +35,8 @@ interface DatePickerCalendarViewProps {
   onChange: (value: Date) => void;
 }
 
+interface DayContainerProps extends DatePickerCalendarViewProps {}
+
 interface GoToCurrentDateProps {
   onClick: () => void;
 }
@@ -47,5 +49,6 @@ export type {
   DatePickerHeaderProps,
   DatePickerMoveProps,
   DatePickerCalendarViewProps,
+  DayContainerProps,
   GoToCurrentDateProps,
 };
