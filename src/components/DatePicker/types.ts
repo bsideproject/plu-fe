@@ -15,8 +15,8 @@ type ViewMode = typeof VIEW_MODE[keyof typeof VIEW_MODE];
 
 // --------------------------------------------- props
 interface DatePickerProps {
-  value?: Date;
-  onChange?: (value: Date) => void;
+  date: Date;
+  onChange: (value: Date) => void;
 }
 
 interface DatePickerHeaderProps {
@@ -25,15 +25,12 @@ interface DatePickerHeaderProps {
 
 interface DatePickerMoveProps {
   date: Date;
-  onChange: (value: Date) => void;
+  onChange: (date: Date) => void;
   mode: MoveMode;
-  onClick: (value: ViewMode) => void;
+  onClick: (mode: ViewMode) => void;
 }
 
-interface DatePickerCalendarViewProps {
-  date: Date;
-  onChange: (value: Date) => void;
-}
+interface DatePickerCalendarViewProps extends DatePickerProps {}
 
 interface DayContainerProps extends DatePickerCalendarViewProps {}
 
