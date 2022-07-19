@@ -1,7 +1,7 @@
 import CustomDate from '@/utils/CustomDate/CustomDate';
 import styled from '@emotion/styled';
 import { DatePickerMonthViewProps } from '../types';
-import { JAN_TO_DEC } from '../utils';
+import { MONTHS } from '../utils';
 
 const Container = styled('div', {
   label: 'DatePickerMonthView',
@@ -32,7 +32,7 @@ const DatePickerMonthView = (props: DatePickerMonthViewProps) => {
 
   return (
     <Container>
-      {JAN_TO_DEC.map((month) => {
+      {Object.values(MONTHS).map((month) => {
         const mDObject = dObject.setMonth(month);
         return (
           <MonthItem

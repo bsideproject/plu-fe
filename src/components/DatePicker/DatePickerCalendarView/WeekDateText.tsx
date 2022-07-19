@@ -1,6 +1,6 @@
 import CustomDate from '@/utils/CustomDate/CustomDate';
 import styled from '@emotion/styled';
-import { zeroTo6 } from '../utils';
+import { DAYS } from '../utils';
 
 const Container = styled('div', {
   label: 'WeekDateText',
@@ -24,11 +24,8 @@ const WeekDateText = () => {
 
   return (
     <Container>
-      {zeroTo6.map((day, index) => {
-        const sunday = index === 0;
-        const saturday = index === 6;
-        const color = sunday ? 'red' : saturday ? 'blue' : undefined;
-
+      {Object.values(DAYS).map((day, index) => {
+        const color = DAYS[day] === DAYS.SUN ? 'red' : DAYS[day] === DAYS.SAT ? 'blue' : undefined;
         return (
           <DateText key={index} color={color}>
             {startOfWeek.add(day, 'day').format('dd')}

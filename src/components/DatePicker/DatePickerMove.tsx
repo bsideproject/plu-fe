@@ -24,7 +24,7 @@ const DatePickerMove = (props: DatePickerMoveProps) => {
 
   const dObject = new CustomDate(date);
 
-  const onClick = () => _onClick(mode);
+  const onChangeMode = () => _onClick(mode);
 
   const onClickPrev = () => {
     const newDate = dObject.subtract(1, mode).getDateObject;
@@ -39,7 +39,9 @@ const DatePickerMove = (props: DatePickerMoveProps) => {
   return (
     <Container>
       <MoveButton onClick={onClickPrev}>왼</MoveButton>
-      <DateText onClick={onClick}>{MOVE_MODE.year === mode ? dObject.format('YYYY') : dObject.format('MM')}</DateText>
+      <DateText onClick={onChangeMode}>
+        {MOVE_MODE.year === mode ? dObject.format('YYYY') : dObject.format('MM')}
+      </DateText>
       <MoveButton onClick={onClickAfter}>오</MoveButton>
     </Container>
   );

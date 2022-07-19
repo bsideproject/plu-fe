@@ -1,7 +1,15 @@
 import CustomDate from '@/utils/CustomDate/CustomDate';
 
 // --------------------------------------- calendar
-const zeroTo6 = [0, 1, 2, 3, 4, 5, 6];
+const DAYS = {
+  SUN: 0,
+  MON: 1,
+  TUE: 2,
+  WEN: 3,
+  THU: 4,
+  FRI: 5,
+  SAT: 6,
+} as const;
 
 const getDayRange = (date: Date) => {
   const result: Date[] = [];
@@ -37,6 +45,20 @@ const generatorYears = (value: Date): number[] => {
 };
 
 // --------------------------------------- month
-const JAN_TO_DEC = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
-export { zeroTo6, getDayRange, yearColsCount, yearItemCount, generatorYears, JAN_TO_DEC };
+const MONTHS = {
+  Jan: 1 - 1,
+  Feb: 2 - 1,
+  Mar: 3 - 1,
+  Apr: 4 - 1,
+  May: 5 - 1,
+  Jun: 6 - 1,
+  Jul: 7 - 1,
+  Aug: 8 - 1,
+  Sep: 9 - 1,
+  Oct: 10 - 1,
+  Nov: 11 - 1,
+  Dec: 12 - 1,
+} as const;
+
+export { DAYS, getDayRange, yearColsCount, yearItemCount, generatorYears, MONTHS };

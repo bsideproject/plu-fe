@@ -46,13 +46,13 @@ const DayContainer = (props: DayContainerProps) => {
         const sunday = index % 7 === 0;
         const saturday = index % 7 === 6;
         const color = sunday ? 'red' : saturday ? 'blue' : undefined;
-        const _yyyymmdd = new CustomDate(day).format('YYYYMMDD');
+        const dayItemYYYYMMDD = new CustomDate(day).format('YYYYMMDD');
 
         return (
           <DayItem
             key={day.toDateString()}
             color={color}
-            isSelected={yyymmdd === _yyyymmdd}
+            isSelected={yyymmdd === dayItemYYYYMMDD}
             onClick={() => {
               onChange(day);
             }}
