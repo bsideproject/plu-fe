@@ -1,6 +1,13 @@
 {
-  "extends": ["eslint:recommended", "next", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "next",
+    "prettier"
+  ],
   "rules": {
-    "prefer-const": "warn"
-  }
+    "prefer-const": "warn",
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ]
 }

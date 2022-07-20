@@ -5,6 +5,7 @@ import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 
 import { GlobalStyle } from '@/theme';
 import { sendRNMessage } from '@/utils/rnMessage';
+import { DatePicker } from '@/components';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
@@ -45,6 +46,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
   }, []);
 
+  const [date, setDate] = useState(new Date());
+
   return (
     <>
       <Head>
@@ -56,6 +59,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <GlobalStyle />
           <p style={{ margin: 100 }}> {type}</p>
           <p style={{ margin: 100 }}> {name}</p>
+          <DatePicker date={date} onChange={(e) => setDate(e)} />
         </Hydrate>
       </QueryClientProvider>
     </>
