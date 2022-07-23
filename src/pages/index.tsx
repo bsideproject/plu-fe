@@ -16,10 +16,7 @@ const Home: NextPage = () => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const resources = [
-    { key: serviceQueryKey.FETCH_TEST(), fetcher: testRequest },
-    { key: serviceQueryKey.FETCH_ADMIN_INFO(), fetcher: fetchAdminInfo },
-  ];
+  const resources = [{ key: serviceQueryKey.FETCH_TEST(), fetcher: testRequest }];
 
   const { dehydratedState } = await usePrefetchQuery(resources);
 

@@ -1,7 +1,7 @@
 import { FC, ReactNode, useState } from 'react';
 import { MutationCache, QueryCache, QueryClient, QueryClientProvider } from 'react-query';
 
-import { useError } from '@/hooks/commons/error';
+import { useError } from '@/hooks/commons/error.hook';
 
 type Props = {
   children: ReactNode;
