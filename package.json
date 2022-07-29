@@ -12,6 +12,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "start:real": "pm2 reload pm2.config.js",
     "lint": "next lint"
   },
   "dependencies": {
