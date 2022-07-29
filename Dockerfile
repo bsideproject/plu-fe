@@ -30,6 +30,7 @@ RUN npm install pm2 -g
 
 # You only need to copy next.config.js if you are NOT using the default configuration
 COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/pm2.config.js ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./package.json
 
@@ -49,4 +50,4 @@ ENV PORT 3000
 # Uncomment the following line in case you want to disable telemetry.
 ENV NEXT_TELEMETRY_DISABLED 1
 
-CMD ["npm", "run", "start:real"]
+CMD ["npm", "run", "start:real"] 
