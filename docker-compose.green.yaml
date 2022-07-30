@@ -1,0 +1,10 @@
+version: '3.1'
+
+services:
+  plu-green-server:
+    image: hoo00nn/11-02-frontend:latest
+
+    container_name: plu-fe-green
+
+    ports:
+      - '8081:3000'
