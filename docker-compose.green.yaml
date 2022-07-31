@@ -1,8 +1,8 @@
 version: '3.1'
 
 services:
-  plu-green-server:
-    image: hoo00nn/11-02-frontend:latest
+  plu-fe-green:
+    image: hoo00nn/plu-fe:latest
 
     container_name: plu-fe-green
 

@@ -29,7 +29,7 @@ if [ -n "$EXIST_AFTER" ]; then
     cp -f /root/app/nginx.${AFTER_COMPOSE_COLOR}.conf /etc/nginx/conf.d/plu.conf
     sudo systemctl reload nginx
     
-    sleep 10
+    sleep 5
 
     # 이전 컨테이너 종료
     docker-compose -p ${DOCKER_APP_NAME}-${BEFORE_COMPOSE_COLOR} -f docker-compose.${BEFORE_COMPOSE_COLOR}.yaml down
