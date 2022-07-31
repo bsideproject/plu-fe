@@ -1,14 +1,15 @@
 import { shouldForwardProp } from '@/utils/emotion';
 import styled from '@emotion/styled';
 import { useState } from 'react';
+import Typography from '../Typography';
 import { TextFieldProps } from './types';
 
 const Container = styled('div')<{ width?: React.CSSProperties['width'] }>(({ width }) => ({
   position: 'relative',
   display: 'inline-flex',
+  flexDirection: 'column',
   borderRadius: 10,
   height: 60,
-  alignItems: 'center',
   width,
 }));
 
@@ -43,6 +44,11 @@ const Input = styled('input', { shouldForwardProp: shouldForwardProp(['error', '
   })
 );
 
+const ErrorMsg = styled(Typography)(({ theme }) => ({
+  marginTop: 10,
+  color: `${theme.color.textfield.error}`,
+}));
+
 const TextField = (props: TextFieldProps) => {
   const { label, value, onChange, error = false, disabled, width } = props;
 
@@ -61,7 +67,8 @@ const TextField = (props: TextFieldProps) => {
       }}
     >
       {label && <Label focus={focus}>{label}</Label>}
-      <Input value={value} onChange={onChange} disabled={disabled} error={error} />
+      <Input value={value} onChange={onChange} disabled={disabled} error={!!error} />
+      {error && <ErrorMsg>{error}</ErrorMsg>}
     </Container>
   );
 };
