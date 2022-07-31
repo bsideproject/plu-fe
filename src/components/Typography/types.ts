@@ -62,6 +62,7 @@ const TYPOGRAPHY: Typography = {
 interface ContainerProps {
   variant?: Variant;
   weight?: FontWeightKey;
+  textAlign?: React.CSSProperties['textAlign'];
 }
 
 interface TypographyProps extends ContainerProps {

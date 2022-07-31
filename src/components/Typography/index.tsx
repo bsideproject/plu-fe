@@ -4,12 +4,13 @@ import { memo } from 'react';
 import { ContainerProps, TypographyProps } from './types';
 
 const Container = styled('span', {
-  shouldForwardProp: shouldForwardProp(['variant', 'weight']),
-})<ContainerProps>(({ theme, variant = 'body1', weight = 'regular' }) => {
+  shouldForwardProp: shouldForwardProp(['variant', 'weight', 'textAlign']),
+})<ContainerProps>(({ theme, textAlign, variant = 'body1', weight = 'regular' }) => {
   const styles = theme.typography[variant];
   const fontWeight = theme.typography.fontWeight[weight];
   return {
     ...styles,
+    textAlign,
     fontWeight: fontWeight,
     textShadow: variant === 'title1' && weight == 'bold' ? theme.typography.textShadow : undefined,
   };
