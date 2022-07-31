@@ -1,6 +1,6 @@
+import { TYPOGRAPHY, Typography } from '@/components/Typography/types';
 import { GlobalStyle } from '@/theme';
 import { COLOR, Color } from '@/theme/Color';
-import { TYPOGRAPHY, Typography } from '@/ui/Typography/types';
 import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
 import { createContext, Dispatch, useContext, useReducer } from 'react';
 
