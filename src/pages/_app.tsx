@@ -1,9 +1,9 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import { dehydrate, Hydrate } from 'react-query';
+import { Hydrate } from 'react-query';
 
-import { GlobalStyle } from '@/theme';
 import ReactQueryClientProvider from '@/commons/QueryClientProvider';
+import ThemeProvider from '@/context/ThemeContext';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -12,10 +12,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, viewport-fit=cover" />
       </Head>
       <ReactQueryClientProvider>
-        <Hydrate state={pageProps.dehydratedState}>
-          <Component {...pageProps} />
-          <GlobalStyle />
-        </Hydrate>
+        <ThemeProvider>
+          <Hydrate state={pageProps.dehydratedState}>
+            <Component {...pageProps} />
+          </Hydrate>
+        </ThemeProvider>
       </ReactQueryClientProvider>
     </>
   );
