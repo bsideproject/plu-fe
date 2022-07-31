@@ -8,6 +8,10 @@ const customReset = css`
     box-sizing: border-box;
   }
 
+  *:focus {
+    outline: 0;
+  }
+
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
   body * {
@@ -18,6 +22,10 @@ const customReset = css`
   button {
     border: 0;
     outline: 0;
+  }
+
+  input {
+    border: none;
   }
 `;
 
