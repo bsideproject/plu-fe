@@ -1,4 +1,5 @@
 import { GlobalStyle } from '@/theme';
+import { COLOR, Color } from '@/theme/Color';
 import { TYPOGRAPHY, Typography } from '@/ui/Typography/types';
 import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
 import { createContext, Dispatch, useContext, useReducer } from 'react';
@@ -6,11 +7,13 @@ import { createContext, Dispatch, useContext, useReducer } from 'react';
 declare module '@emotion/react' {
   export interface Theme {
     typography: Typography;
+    color: Color;
   }
 }
 
 interface Theme {
   typography: Typography;
+  color: Color;
 }
 
 type Action = {};
@@ -32,6 +35,7 @@ const ThemeProvider = (props: Props) => {
   const { children } = props;
   const [state, dispatch] = useReducer(reducer, {
     typography: TYPOGRAPHY,
+    color: COLOR,
   });
 
   return (

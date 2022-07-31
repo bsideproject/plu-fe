@@ -13,7 +13,11 @@ const customReset = css`
   body * {
     font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
       'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
-    padding: 0 20px;
+  }
+
+  button {
+    border: 0;
+    outline: 0;
   }
 `;
 
