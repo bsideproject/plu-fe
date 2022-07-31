@@ -12,7 +12,7 @@ const TextFieldComponent = () => {
       <TextField value={value} onChange={onChange} label="Title" />
       <TextField value={value} onChange={onChange} label="Title" />
       <TextField value={value} onChange={onChange} label="Title" />
-      <TextField value={value} onChange={onChange} label="Title" error />
+      <TextField value={value} onChange={onChange} label="Title" error="error입니다" />
     </>
   );
 };
