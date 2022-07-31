@@ -1,4 +1,6 @@
 #!/bin/bash
+
+DOCKER_APP_NAME=plu
  
 # Blue 를 기준으로 현재 떠있는 컨테이너를 체크한다.
 EXIST_BLUE=$(docker-compose -p ${DOCKER_APP_NAME}-blue -f docker-compose.blue.yaml ps | grep Up)
@@ -6,11 +8,13 @@ EXIST_BLUE=$(docker-compose -p ${DOCKER_APP_NAME}-blue -f docker-compose.blue.ya
 # 컨테이너 스위칭
 if [ -z "$EXIST_BLUE" ]; then
     echo "blue up"
+    docker-compose -p ${DOCKER_APP_NAME}-blue -f docker-compose.blue.yaml pull
     docker-compose -p ${DOCKER_APP_NAME}-blue -f docker-compose.blue.yaml up -d
     BEFORE_COMPOSE_COLOR="green"
     AFTER_COMPOSE_COLOR="blue"
 else
     echo "green up"
+    docker-compose -p ${DOCKER_APP_NAME}-green -f docker-compose.green.yaml pull
     docker-compose -p ${DOCKER_APP_NAME}-green -f docker-compose.green.yaml up -d
     BEFORE_COMPOSE_COLOR="blue"
     AFTER_COMPOSE_COLOR="green"
