@@ -13,6 +13,7 @@
         "argsIgnorePattern": "^_"
       }
     ],
+    "react/display-name": "off",
     "react-hooks/exhaustive-deps": "warn",
     "linebreak-style": ["error", "unix"],
     "no-console": "warn",

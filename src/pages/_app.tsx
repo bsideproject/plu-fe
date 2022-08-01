@@ -4,9 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 
 import { GlobalStyle } from '@/theme';
-import { sendRNMessage } from '@/utils/rnMessage';
-import { DatePicker } from '@/components';
 import KaKaoMapContainer from '@/components/commons/KaKaoMapContainer';
+import ReactQueryClientProvider from '@/commons/QueryClientProvider';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
@@ -22,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       const map = new window.kakao.maps.Map(kakaoMapRef.current, options);
     }
   }, []);
-  
+
   return (
     <>
       <Head>
