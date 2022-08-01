@@ -9,7 +9,6 @@ const Container = styled('div')<{ width?: React.CSSProperties['width'] }>(({ wid
   display: 'inline-flex',
   flexDirection: 'column',
   borderRadius: 10,
-  height: 60,
   width,
 }));
 
@@ -26,7 +25,7 @@ const Label = styled('label', { shouldForwardProp: shouldForwardProp(['focus']) 
 const Input = styled('input', { shouldForwardProp: shouldForwardProp(['error', 'disabled']) })<{ error: boolean }>(
   ({ theme, disabled, error }) => ({
     width: '100%',
-    height: '100%',
+    height: 60,
     borderRadius: 10,
     fontSize: 14,
     padding: 16,
