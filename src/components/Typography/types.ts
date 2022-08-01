@@ -63,6 +63,9 @@ interface ContainerProps {
   variant?: Variant;
   weight?: FontWeightKey;
   textAlign?: React.CSSProperties['textAlign'];
+  fullWidth?: boolean;
+  width?: React.CSSProperties['width'];
+  color?: React.CSSProperties['color'];
 }
 
 interface TypographyProps extends ContainerProps {
