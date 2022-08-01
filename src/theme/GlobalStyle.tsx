@@ -19,6 +19,10 @@ const customReset = css`
       'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
   }
 
+  #__next {
+    padding: 0 20px;
+  }
+
   button {
     border: 0;
     outline: 0;
