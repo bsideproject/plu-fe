@@ -21,6 +21,8 @@ const customReset = css`
 
   #__next {
     padding: 0 20px;
+    min-height: 100vh;
+    height: 100vh;
   }
 
   button {
