@@ -1,13 +1,21 @@
 {
-  "extends": [
-    "eslint:recommended",
-    "next",
-    "prettier"
-  ],
+  "plugins": ["@typescript-eslint", "prettier"],
+  "extends": ["prettier", "eslint:recommended", "next", "prettier", "plugin:@typescript-eslint/recommended"],
   "rules": {
-    "prefer-const": "warn",
-  },
-  "plugins": [
-    "@typescript-eslint"
-  ]
+    "prettier/prettier": ["error"],
+    "prefer-const": "error",
+    "no-var": "error",
+    "react/prop-types": "off",
+    "@typescript-eslint/no-empty-interface": "warn",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "react-hooks/exhaustive-deps": "warn",
+    "linebreak-style": ["error", "unix"],
+    "no-console": "warn",
+    "no-undef": "warn"
+  }
 }

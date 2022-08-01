@@ -4,7 +4,8 @@ import styled from '@emotion/styled';
 import { serviceQueryKey } from '@/commons/serviceQueryKey';
 import { testRequest } from '@/networks/test';
 import { useTestQuery } from '@/hooks/test';
-import { usePrefetchQuery } from '@/hooks/commons/prefetchQuery.hook';
+import { prefetchQueryWithSSR } from '@/commons/prefetchQuery';
+
 
 const MyStyleComponent = styled.div({ backgroundColor: 'red' });
 
@@ -17,7 +18,7 @@ const Home: NextPage = () => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const resources = [{ key: serviceQueryKey.FETCH_TEST(), fetcher: testRequest }];
 
-  const { dehydratedState } = await usePrefetchQuery(resources);
+  const { dehydratedState } = await prefetchQueryWithSSR(resources);
 
   return {
     props: {

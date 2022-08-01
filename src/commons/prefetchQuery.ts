@@ -5,7 +5,7 @@ type ResourcesType = {
   fetcher: (...args: any) => void;
 };
 
-export async function usePrefetchQuery(resources: ResourcesType[]) {
+export async function prefetchQueryWithSSR(resources: ResourcesType[]) {
   const queryClient = new QueryClient();
 
   await Promise.all(resources.map(({ key, fetcher }) => queryClient.prefetchQuery(key, fetcher)));
