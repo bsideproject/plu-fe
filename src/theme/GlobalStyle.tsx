@@ -20,7 +20,7 @@ const customReset = css`
   }
 
   #__next {
-    padding: 0 20px;
+    padding: 0 20px 16px;
     min-height: 100vh;
     height: 100vh;
   }

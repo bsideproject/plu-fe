@@ -26,7 +26,6 @@ const LoginButtonGroup = styled('div')(() => ({
   display: 'flex',
   flexDirection: 'column',
   gap: 4,
-  marginBottom: 16,
 }));
 
 const Login = () => {
