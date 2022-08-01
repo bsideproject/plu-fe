@@ -12,6 +12,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "start:real": "node server.js",
     "check:lint": "eslint src",
     "check:ts": "tsc --noEmit"
   },

@@ -6,12 +6,13 @@ import { testRequest } from '@/networks/test';
 import { useTestQuery } from '@/hooks/test';
 import { prefetchQueryWithSSR } from '@/commons/prefetchQuery';
 
+
 const MyStyleComponent = styled.div({ backgroundColor: 'red' });
 
 const Home: NextPage = () => {
   const { data } = useTestQuery();
 
-  return <MyStyleComponent>hello, bside {data}</MyStyleComponent>;
+  return <MyStyleComponent>{data}</MyStyleComponent>;
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
