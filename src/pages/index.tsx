@@ -7,7 +7,6 @@ import { useTestQuery } from '@/hooks/test';
 import { usePrefetchQuery } from '@/hooks/commons/prefetchQuery.hook';
 import { fetchAdminInfo } from '@/networks/admin';
 
-
 const MyStyleComponent = styled.div({ backgroundColor: 'red' });
 
 const Home: NextPage = () => {
