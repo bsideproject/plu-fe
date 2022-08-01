@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                   <Button
                     key={com}
                     onClick={() => {
-                      router.push(com);
+                      router.push(`/components/${com}`);
                     }}
                   >
                     {com}
