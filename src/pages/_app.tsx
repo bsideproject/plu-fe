@@ -1,11 +1,28 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import { Hydrate } from 'react-query';
+import { useEffect, useRef, useState } from 'react';
+import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 
 import { GlobalStyle } from '@/theme';
-import ReactQueryClientProvider from '@/commons/QueryClientProvider';
+import { sendRNMessage } from '@/utils/rnMessage';
+import { DatePicker } from '@/components';
+import KaKaoMapContainer from '@/components/commons/KaKaoMapContainer';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [queryClient] = useState(() => new QueryClient());
+  const kakaoMapRef = useRef<HTMLDivElement>(null);
+
+  // 사용 예시
+  useEffect(() => {
+    if (window.kakao && kakaoMapRef.current) {
+      const options = {
+        center: new window.kakao.maps.LatLng(33.450701, 126.570667),
+        level: 3,
+      };
+      const map = new window.kakao.maps.Map(kakaoMapRef.current, options);
+    }
+  }, []);
+  
   return (
     <>
       <Head>
@@ -15,6 +32,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Hydrate state={pageProps.dehydratedState}>
           <Component {...pageProps} />
           <GlobalStyle />
+          {/* <KaKaoMapContainer ref={kakaoMapRef} width={500} height={500} /> */}
         </Hydrate>
       </ReactQueryClientProvider>
     </>
