@@ -34,5 +34,8 @@ if [ -n "$EXIST_AFTER" ]; then
     # 이전 컨테이너 종료
     docker-compose -p ${DOCKER_APP_NAME}-${BEFORE_COMPOSE_COLOR} -f docker-compose.${BEFORE_COMPOSE_COLOR}.yaml down
     echo "$BEFORE_COMPOSE_COLOR down"
+
+    # 사용되지 않는 컨테이너, 이미지 모두 삭제
+    docker system prune -f -a
 fi
  
