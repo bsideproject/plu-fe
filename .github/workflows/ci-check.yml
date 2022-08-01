@@ -1,0 +1,32 @@
+name: CI check
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  ci-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      # checkout branch
+      - uses: actions/checkout@v3
+
+      # setup node
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+
+      - name: Install the project dependencies
+        run: npm ci
+
+      - name: Lint check
+        run: npm run check:lint
+
+      - name: TS check
+        run: npm run check:ts
+
+      - name: build check
+        run: npm run build
