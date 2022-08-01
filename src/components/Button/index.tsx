@@ -1,23 +1,55 @@
 import styled from '@emotion/styled';
+import IconButton from '../IconButton';
+import Typography from '../Typography';
 import { ButtonProps } from './types';
 
-const Container = styled('button')<ButtonProps>(
-  ({ theme, disabled, variant: _variant = 'active', fullWidth, width }) => {
+const Container = styled('button')<Omit<ButtonProps, 'children'>>(
+  ({ theme, disabled, variant: _variant = 'active', fullWidth, width, bgColor }) => {
     const variant = disabled ? 'disabled' : _variant;
     return {
+      display: 'inline-flex',
+      position: 'relative',
+      alignItems: 'center',
       width: fullWidth ? '100%' : width ? width : undefined,
       padding: '12px 0',
-      backgroundColor: theme.color.button[variant],
+      backgroundColor: bgColor ? bgColor : theme.color.button[variant],
       borderRadius: 10,
     };
   }
 );
 
+const ButtonIconButton = styled(IconButton)<{ direction: 'left' | 'right' }>(({ direction }) => ({
+  position: 'absolute',
+  left: direction === 'left' ? 16 : undefined,
+  right: direction === 'right' ? 16 : undefined,
+}));
+
 const Button = (props: ButtonProps) => {
-  const { type = 'button', children, ...rest } = props;
+  const {
+    type = 'button',
+    startIcon,
+    onClickStartIcon = () => {},
+    endIcon,
+    onClickEndIcon = () => {},
+    children,
+    color,
+    ...rest
+  } = props;
   return (
     <Container type={type} {...rest}>
-      {children}
+      {startIcon && (
+        <ButtonIconButton direction="left" onClick={onClickStartIcon}>
+          {startIcon}
+        </ButtonIconButton>
+      )}
+      <Typography color={color} component="p" fullWidth textAlign="center">
+        {children}
+      </Typography>
+      {endIcon && (
+        <ButtonIconButton direction="right" onClick={onClickEndIcon}>
+          {endIcon}
+        </ButtonIconButton>
+      )}
     </Container>
   );
 };
