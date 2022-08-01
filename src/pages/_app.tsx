@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import { dehydrate, Hydrate } from 'react-query';
+import { Hydrate } from 'react-query';
 
 import { GlobalStyle } from '@/theme';
 import ReactQueryClientProvider from '@/commons/QueryClientProvider';
