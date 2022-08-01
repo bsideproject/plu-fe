@@ -1,0 +1,10 @@
+version: '3.1'
+
+services:
+  plu-fe-blue:
+    image: hoo00nn/plu-fe:latest
+
+    container_name: plu-fe-blue
+
+    ports:
+      - '8080:3000'

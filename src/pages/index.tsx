@@ -7,12 +7,13 @@ import { useTestQuery } from '@/hooks/test';
 import { usePrefetchQuery } from '@/hooks/commons/prefetchQuery.hook';
 import { fetchAdminInfo } from '@/networks/admin';
 
+
 const MyStyleComponent = styled.div({ backgroundColor: 'red' });
 
 const Home: NextPage = () => {
   const { data } = useTestQuery();
 
-  return <MyStyleComponent>hello, bside {data}</MyStyleComponent>;
+  return <MyStyleComponent>{data}</MyStyleComponent>;
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

@@ -12,7 +12,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "start:real": "node server.js",
+    "check:lint": "eslint src",
+    "check:ts": "tsc --noEmit"
   },
   "dependencies": {
     "axios": "^0.27.2",
