@@ -49,12 +49,13 @@ const ErrorMsg = styled(Typography)(({ theme }) => ({
 }));
 
 const TextField = (props: TextFieldProps) => {
-  const { label, value, onChange, error = false, disabled, width } = props;
+  const { className, label, value, onChange, error = false, disabled, width } = props;
 
   const [focus, setFocus] = useState(value ? true : false);
 
   return (
     <Container
+      className={className}
       width={width}
       onFocus={(e) => {
         e.stopPropagation();
