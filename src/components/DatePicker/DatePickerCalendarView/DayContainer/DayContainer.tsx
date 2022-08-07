@@ -17,10 +17,10 @@ const DayItem = styled('div', {
 })<{ color?: string; isSelected: boolean }>(({ color, isSelected }) => {
   return {
     width: `${100 / 7}%`,
-    backgroundColor: isSelected ? '#a8a8e6' : undefined,
+    backgroundColor: isSelected ? '#19C885' : undefined,
     cursor: 'pointer',
     color,
-    padding: '14px 8px',
+    padding: 16,
     '&:hover': {
       background: 'green',
       color: 'white !important',
