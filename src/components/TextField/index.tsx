@@ -22,26 +22,30 @@ const Label = styled('label', { shouldForwardProp: shouldForwardProp(['focus']) 
   color: '#79818F',
 }));
 
-const Input = styled('input', { shouldForwardProp: shouldForwardProp(['error', 'disabled']) })<{ error: boolean }>(
-  ({ theme, disabled, error }) => ({
-    width: '100%',
-    height: 60,
-    borderRadius: 10,
-    fontSize: 14,
-    padding: 16,
-    paddingTop: 24,
-    border: error ? `1px solid ${theme.color.textfield.error}` : `1px solid ${theme.color.textfield.normal}`,
-    '&:focus': {
-      border: disabled ? undefined : `1px solid ${theme.color.textfield.focus}`,
-    },
-    '&:active': {
-      border: disabled ? undefined : `1px solid ${theme.color.textfield.active}`,
-    },
-    '&:invalid': {
-      border: disabled ? undefined : `1px solid ${theme.color.textfield.error}`,
-    },
-  })
-);
+const Input = styled('textarea', { shouldForwardProp: shouldForwardProp(['error', 'multiline']) })<{
+  error: boolean;
+  multiline: boolean;
+}>(({ theme, disabled, error, multiline, rows }) => ({
+  width: '100%',
+  height: rows === 1 ? 60 : undefined,
+  borderRadius: 10,
+  fontSize: 14,
+  padding: 16,
+  paddingTop: 24,
+  resize: 'none',
+  whiteSpace: multiline ? 'normal' : 'nowrap',
+  overflow: multiline ? 'auto' : 'hidden',
+  border: error ? `1px solid ${theme.color.textfield.error}` : `1px solid ${theme.color.textfield.normal}`,
+  '&:focus': {
+    border: disabled ? undefined : `1px solid ${theme.color.textfield.focus}`,
+  },
+  '&:active': {
+    border: disabled ? undefined : `1px solid ${theme.color.textfield.active}`,
+  },
+  '&:invalid': {
+    border: disabled ? undefined : `1px solid ${theme.color.textfield.error}`,
+  },
+}));
 
 const ErrorMsg = styled(Typography)(({ theme }) => ({
   marginTop: 10,
@@ -49,14 +53,25 @@ const ErrorMsg = styled(Typography)(({ theme }) => ({
 }));
 
 const TextField = (props: TextFieldProps) => {
-  const { className, label, value, onChange, error = false, disabled, width } = props;
+  const {
+    className,
+    label,
+    value,
+    onChange,
+    error = false,
+    disabled,
+    fullWidth,
+    width,
+    rows = 1,
+    multiline = false,
+  } = props;
 
   const [focus, setFocus] = useState(value ? true : false);
 
   return (
     <Container
       className={className}
-      width={width}
+      width={fullWidth ? '100%' : width}
       onFocus={(e) => {
         e.stopPropagation();
         setFocus(true);
@@ -67,7 +82,19 @@ const TextField = (props: TextFieldProps) => {
       }}
     >
       {label && <Label focus={focus}>{label}</Label>}
-      <Input value={value} onChange={onChange} disabled={disabled} error={!!error} />
+      <Input
+        value={value}
+        onChange={onChange}
+        disabled={disabled}
+        multiline={multiline}
+        error={!!error}
+        rows={rows}
+        onKeyPress={(e) => {
+          if (e.key === 'Enter' && !multiline) {
+            e.preventDefault();
+          }
+        }}
+      />
       {error && <ErrorMsg>{error}</ErrorMsg>}
     </Container>
   );

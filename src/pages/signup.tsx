@@ -24,7 +24,7 @@ const NicknameField = styled(TextField)(() => ({
 const Signup = () => {
   const [nickname, setNickname] = useState('');
 
-  const onChangeNickname = useCallback((e: ChangeEvent<HTMLInputElement>) => setNickname(e.target.value), []);
+  const onChangeNickname = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => setNickname(e.target.value), []);
 
   return (
     <Container>
