@@ -12,6 +12,7 @@ interface Props {
   fullHeight?: boolean;
   gap?: React.CSSProperties['gap'];
   padding?: React.CSSProperties['padding'];
+  margin?: React.CSSProperties['margin'];
   label?: string;
 }
 
@@ -26,8 +27,9 @@ const Flex = styled('div', {
     'fullHeight',
     'gap',
     'padding',
+    'margin',
   ]),
-})<Props>(({ direction, gap, justifyContent, alignItems, width, fullWidth, height, fullHeight, padding }) => ({
+})<Props>(({ direction, gap, justifyContent, alignItems, width, fullWidth, height, fullHeight, padding, margin }) => ({
   display: 'flex',
   flexDirection: direction,
   justifyContent: justifyContent,
@@ -36,6 +38,7 @@ const Flex = styled('div', {
   height: fullHeight ? '100%' : height,
   gap,
   padding,
+  margin,
 }));
 
 export default memo(Flex);
