@@ -8,6 +8,7 @@ interface TextFieldProps extends React.ComponentProps<'textarea'> {
   fullWidth?: boolean;
   rows?: number;
   multiline?: boolean;
+  textAlign?: React.CSSProperties['textAlign'];
 }
 
 export type { TextFieldProps };

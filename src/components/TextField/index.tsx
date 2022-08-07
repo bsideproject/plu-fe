@@ -1,6 +1,6 @@
 import { shouldForwardProp } from '@/utils/emotion';
 import styled from '@emotion/styled';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Typography from '../Typography';
 import { TextFieldProps } from './types';
 
@@ -22,10 +22,11 @@ const Label = styled('label', { shouldForwardProp: shouldForwardProp(['focus']) 
   color: '#79818F',
 }));
 
-const Input = styled('textarea', { shouldForwardProp: shouldForwardProp(['error', 'multiline']) })<{
+const Input = styled('textarea', { shouldForwardProp: shouldForwardProp(['error', 'multiline', 'textAlign']) })<{
   error: boolean;
   multiline: boolean;
-}>(({ theme, disabled, error, multiline, rows }) => ({
+  textAlign: React.CSSProperties['textAlign'];
+}>(({ theme, disabled, error, multiline, rows, textAlign }) => ({
   width: '100%',
   height: rows === 1 ? 60 : undefined,
   borderRadius: 10,
@@ -35,6 +36,7 @@ const Input = styled('textarea', { shouldForwardProp: shouldForwardProp(['error'
   resize: 'none',
   whiteSpace: multiline ? 'normal' : 'nowrap',
   overflow: multiline ? 'auto' : 'hidden',
+  textAlign,
   border: error ? `1px solid ${theme.color.textfield.error}` : `1px solid ${theme.color.textfield.normal}`,
   '&:focus': {
     border: disabled ? undefined : `1px solid ${theme.color.textfield.focus}`,
@@ -64,6 +66,7 @@ const TextField = (props: TextFieldProps) => {
     width,
     rows = 1,
     multiline = false,
+    textAlign,
   } = props;
 
   const [focus, setFocus] = useState(value ? true : false);
@@ -94,6 +97,7 @@ const TextField = (props: TextFieldProps) => {
             e.preventDefault();
           }
         }}
+        textAlign={textAlign}
       />
       {error && <ErrorMsg>{error}</ErrorMsg>}
     </Container>
