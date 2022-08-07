@@ -1,7 +1,7 @@
 import { Button, NavigationBar, Typography } from '@/components';
 import TextField from '@/components/TextField';
 import { ArrowLeftIcon } from '@/icons';
-import { Flex, FlexItem } from '@/ui';
+import { Flex, FlexItem, MB20 } from '@/ui';
 import { ChangeEvent, useCallback, useState } from 'react';
 
 const CREW_CATEGORY = {
@@ -32,49 +32,55 @@ const CreateCrew = () => {
 
   return (
     <Flex label="CreateCrew" direction="column" justifyContent="space-between" fullHeight>
-      <NavigationBar startIcon={<ArrowLeftIcon />} title="크루생성" />
-      <Flex label="CreateCrew-CategoryContainer" direction="column" gap={14} padding={8}>
-        <Typography component="p" variant="subheadline1" weight="semibold">
-          카테고리
-        </Typography>
-        <Flex label="CreateCrew-CategoryContainer-CategoryButtonContainer" gap={2}>
-          <FlexItem grow={1}>
-            <Button
-              onClick={onChangeType(CREW_CATEGORY.플로깅)}
-              fullWidth
-              variant={type === CREW_CATEGORY.플로깅 ? 'outlined' : 'normal'}
-              value={CREW_CATEGORY.플로깅}
-            >
-              플로깅
-            </Button>
-          </FlexItem>
-          <FlexItem grow={1}>
-            <Button
-              onClick={onChangeType(CREW_CATEGORY.비치코밍)}
-              fullWidth
-              variant={type !== CREW_CATEGORY.플로깅 ? 'outlined' : 'normal'}
-              value={CREW_CATEGORY.비치코밍}
-            >
-              비치코밍
-            </Button>
-          </FlexItem>
+      <div>
+        <MB20>
+          <NavigationBar startIcon={<ArrowLeftIcon />} title="크루생성" />
+        </MB20>
+        <MB20>
+          <Flex label="CreateCrew-CategoryContainer" direction="column" gap={14} padding={8}>
+            <Typography component="p" variant="subheadline1" weight="semibold">
+              카테고리
+            </Typography>
+            <Flex label="CreateCrew-CategoryContainer-CategoryButtonContainer" gap={2}>
+              <FlexItem grow={1}>
+                <Button
+                  onClick={onChangeType(CREW_CATEGORY.플로깅)}
+                  fullWidth
+                  variant={type === CREW_CATEGORY.플로깅 ? 'outlined' : 'normal'}
+                  value={CREW_CATEGORY.플로깅}
+                >
+                  플로깅
+                </Button>
+              </FlexItem>
+              <FlexItem grow={1}>
+                <Button
+                  onClick={onChangeType(CREW_CATEGORY.비치코밍)}
+                  fullWidth
+                  variant={type !== CREW_CATEGORY.플로깅 ? 'outlined' : 'normal'}
+                  value={CREW_CATEGORY.비치코밍}
+                >
+                  비치코밍
+                </Button>
+              </FlexItem>
+            </Flex>
+          </Flex>
+        </MB20>
+        <Flex label="CreateCrew-CrewInputContainer" padding={8} direction="column" gap={14}>
+          <Typography component="p" variant="subheadline1" weight="semibold">
+            크루소개
+          </Typography>
+          <TextField value={crewName} onChange={onChangeCrewName} label="크루이름" fullWidth />
+          <TextField value={title} onChange={onChangeTitle} label="제목" fullWidth />
+          <TextField
+            value={description}
+            onChange={onChangeDescription}
+            label="크루를 소개해 주세요."
+            rows={6}
+            fullWidth
+            multiline
+          />
         </Flex>
-      </Flex>
-      <Flex label="CreateCrew-CrewInputContainer" padding={8} direction="column" gap={14}>
-        <Typography component="p" variant="subheadline1" weight="semibold">
-          크루소개
-        </Typography>
-        <TextField value={crewName} onChange={onChangeCrewName} label="크루이름" fullWidth />
-        <TextField value={title} onChange={onChangeTitle} label="제목" fullWidth />
-        <TextField
-          value={description}
-          onChange={onChangeDescription}
-          label="크루를 소개해 주세요."
-          rows={6}
-          fullWidth
-          multiline
-        />
-      </Flex>
+      </div>
 
       <Button fullWidth disabled={!disabled}>
         확인
