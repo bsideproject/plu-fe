@@ -72,6 +72,7 @@ const Dialog = (props: Props) => {
       if (modalElement) {
         modalElement.style.display = 'none';
         modalElement.removeChild(background);
+        modalElement.removeChild(dialog);
       }
     };
   }, [open]);
