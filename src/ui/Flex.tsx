@@ -18,12 +18,13 @@ interface Props {
 const Flex = styled('div', {
   shouldForwardProp: shouldForwardProp([
     'direction',
-    'gap',
     'justifyContent',
     'alignItems',
     'width',
     'fullWidth',
     'height',
+    'fullHeight',
+    'gap',
     'padding',
   ]),
 })<Props>(({ direction, gap, justifyContent, alignItems, width, fullWidth, height, fullHeight, padding }) => ({
