@@ -22,14 +22,14 @@ const Stack = styled('div')(() => ({
 const NavigationBottom = (props: NavigationBottomProps) => {
   const { data = [] } = props;
 
-  const size = useMemo(() => data.length, []);
+  const size = useMemo(() => data.length, [data.length]);
 
   return (
     <Container size={size}>
-      {data.map((item) => {
+      {data.map((item, index) => {
         const { icon, text } = item;
         return (
-          <Stack>
+          <Stack key={index}>
             {icon}
             <Typography>{text}</Typography>
           </Stack>
