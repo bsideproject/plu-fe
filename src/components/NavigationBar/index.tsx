@@ -1,3 +1,4 @@
+import { shouldForwardProp } from '@/utils/emotion';
 import styled from '@emotion/styled';
 import IconButton from '../IconButton';
 import Typography from '../Typography';
@@ -12,14 +13,30 @@ const NavigationBarTypography = styled(Typography)(() => ({
   flex: 1,
 }));
 
+const Hidden = styled('div', {
+  shouldForwardProp: shouldForwardProp(['hidden']),
+})<{ hidden: boolean }>(({ hidden }) => ({
+  visibility: hidden ? 'hidden' : undefined,
+}));
+
 const NavigationBar = (props: NavigationBarProps) => {
   const { startIcon, endIcon, onClickStartIcon = () => {}, onClickEndIcon = () => {}, title } = props;
 
+  const icon = startIcon || endIcon;
+
   return (
     <Container>
-      {startIcon && <IconButton onClick={onClickStartIcon}>{startIcon}</IconButton>}
+      {icon && (
+        <Hidden hidden={!startIcon}>
+          <IconButton onClick={onClickStartIcon}>{startIcon ? startIcon : endIcon}</IconButton>
+        </Hidden>
+      )}
       <NavigationBarTypography textAlign="center">{title}</NavigationBarTypography>
-      {endIcon && <IconButton onClick={onClickEndIcon}>{endIcon}</IconButton>}
+      {icon && (
+        <Hidden hidden={!endIcon}>
+          <IconButton onClick={onClickEndIcon}>{endIcon ? endIcon : startIcon}</IconButton>
+        </Hidden>
+      )}
     </Container>
   );
 };
