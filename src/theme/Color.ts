@@ -1,12 +1,16 @@
 // -------------------------------- ButtonColor
 interface ButtonColor {
-  active: string;
-  disabled: string;
+  active: { color: string; bgColor: string; border?: string };
+  disabled: { color: string; bgColor: string; border?: string };
+  outlined: { color: string; bgColor: string; border?: string };
+  normal: { color: string; bgColor: string; border?: string };
 }
 
 const BUTTON_COLOR: ButtonColor = {
-  active: '#19C885',
-  disabled: '#E6E6E6',
+  active: { color: 'white', bgColor: '#19C885' },
+  disabled: { color: '#E6E6E6', bgColor: '#999999' },
+  outlined: { color: '#19C885', bgColor: 'white', border: '#19C885' },
+  normal: { color: '#999999', bgColor: 'white', border: '#999999' },
 };
 
 // -------------------------------- TextFieldColor

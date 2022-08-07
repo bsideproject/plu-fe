@@ -4,16 +4,21 @@ import Typography from '../Typography';
 import { ButtonProps } from './types';
 
 const Container = styled('button')<Omit<ButtonProps, 'children'>>(
-  ({ theme, disabled, variant: _variant = 'active', fullWidth, width, bgColor }) => {
+  ({ theme, disabled, variant: _variant = 'active', fullWidth, width, bgColor: _bgColor }) => {
     const variant = disabled ? 'disabled' : _variant;
+
+    const { color, bgColor, border } = theme.color.button[variant];
+
     return {
       display: 'inline-flex',
       position: 'relative',
       alignItems: 'center',
       width: fullWidth ? '100%' : width ? width : undefined,
       padding: '12px 0',
-      backgroundColor: bgColor ? bgColor : theme.color.button[variant],
       borderRadius: 10,
+      color: color,
+      backgroundColor: _bgColor ? _bgColor : bgColor,
+      border: border ? `1px solid ${border}` : undefined,
     };
   }
 );
