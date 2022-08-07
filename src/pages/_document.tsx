@@ -14,7 +14,16 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <div id="modal_container" />
+          <div
+            id="modal"
+            style={{
+              display: 'none',
+              position: 'fixed',
+              inset: 0,
+              flexDirection: 'column',
+              justifyContent: 'flex-end',
+            }}
+          />
         </body>
       </Html>
     );
