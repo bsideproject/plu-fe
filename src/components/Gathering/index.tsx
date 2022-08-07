@@ -10,26 +10,27 @@ const Container = styled('div')<{ bb: boolean }>(({ bb }) => ({
 }));
 
 interface Props {
-  label1: string;
-  label2?: string;
+  label: string;
+  text: string;
   bb?: boolean;
+  onClick?: () => void;
 }
 
 const Gathering = (props: Props) => {
-  const { label1, label2 = '선택', bb = true } = props;
+  const { label, text, bb = true, onClick = () => {} } = props;
 
   return (
     <Container bb={bb}>
       <Flex fullWidth justifyContent={'space-between'}>
         <Flex alignItems={'center'} gap={10}>
           <Typography variant="subheadline1" weight="semibold">
-            {label1}
+            {label}
           </Typography>
           <Typography color="#999" variant="body1">
-            {label2}
+            {text ? text : '선택'}
           </Typography>
         </Flex>
-        <IconButton>
+        <IconButton onClick={onClick}>
           <ArrowRightIcon />
         </IconButton>
       </Flex>
