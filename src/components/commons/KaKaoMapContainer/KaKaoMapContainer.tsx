@@ -2,8 +2,8 @@ import React, { forwardRef } from 'react';
 import { Container } from './styled';
 
 export type Props = {
-  width: number;
-  height: number;
+  width: React.CSSProperties['width'];
+  height: React.CSSProperties['height'];
 };
 
 const KaKaoMapContainer = forwardRef<HTMLDivElement, Props>((props, ref) => {
