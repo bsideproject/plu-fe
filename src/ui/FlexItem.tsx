@@ -4,12 +4,14 @@ import React, { memo } from 'react';
 
 interface Props {
   grow?: React.CSSProperties['flexGrow'];
+  width?: React.CSSProperties['width'];
 }
 
 const FlexItem = styled('div', {
-  shouldForwardProp: shouldForwardProp(['grow']),
-})<Props>(({ grow }) => ({
+  shouldForwardProp: shouldForwardProp(['grow', 'width']),
+})<Props>(({ grow, width }) => ({
   flexGrow: grow,
+  width,
 }));
 
 export default memo(FlexItem);
