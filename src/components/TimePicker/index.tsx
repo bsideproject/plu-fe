@@ -45,7 +45,7 @@ const TimePicker = (props: Props) => {
   const onSave = () => {
     const hour = dObject.hour;
     const minute = dObject.minute;
-    const newDate = new CustomDate(value).startOf('day').setHour(hour).setMinute(minute).getDateObject;
+    const newDate = new CustomDate(value).setHour(hour).setMinute(minute).getDateObject;
 
     onChange(newDate);
   };
