@@ -15,8 +15,12 @@ const getDayRange = (date: Date) => {
   const result: Date[] = [];
   const dObject = new CustomDate(date);
 
-  let start = dObject.startOf('month').startOf('week');
-  const end = dObject.endOf('month').endOf('week');
+  const hour = dObject.hour;
+  const minute = dObject.minute;
+  const second = dObject.second;
+
+  let start = dObject.startOf('month').startOf('week').setHour(hour).setMinute(minute).setSecond(second);
+  const end = dObject.endOf('month').endOf('week').setHour(hour).setMinute(minute).setSecond(second);
 
   do {
     result.push(start.getDateObject);
