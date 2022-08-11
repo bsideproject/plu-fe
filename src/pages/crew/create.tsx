@@ -1,96 +1,68 @@
-import { Button, NavigationBar, Typography } from '@/components';
-import TextField from '@/components/TextField';
-import { ArrowLeftIcon } from '@/icons';
-import { Flex, FlexItem, MB20, Padding } from '@/ui';
-import { ChangeEvent, useCallback, useState } from 'react';
+import CreateCrew_Intro from '@/components/Crew/Create/CreateCrew_Intro';
+import CreateCrew_Location from '@/components/Crew/Create/CreateCrew_Location';
+import { useCallback, useState } from 'react';
 
-const CREW_CATEGORY = {
-  플로깅: '플로깅',
-  비치코밍: '비치코밍',
-} as const;
+const TAB_INDEX = [0, 1] as const;
+type TabIndex = typeof TAB_INDEX[number];
 
-type CrewCategry = typeof CREW_CATEGORY[keyof typeof CREW_CATEGORY];
+export const MAX_LOCATION = 3;
+
+export type Location = {
+  city: string;
+  district: string;
+};
 
 const CreateCrew = () => {
   const [crewName, setCrewName] = useState('');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [type, setType] = useState<CrewCategry>('플로깅');
+  const [image, setImage] = useState('');
+  const [location, setLocation] = useState<Location[]>([]);
+  const [tabIndex, setTabIndex] = useState<TabIndex>(0);
 
-  const onChangeCrewName = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => setCrewName(e.currentTarget.value), []);
+  const onChangeCrewName = useCallback((crewName: string) => setCrewName(crewName), []);
 
-  const onChangeTitle = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => setTitle(e.currentTarget.value), []);
+  const onChangeTitle = useCallback((title: string) => setTitle(title), []);
 
-  const onChangeDescription = useCallback(
-    (e: ChangeEvent<HTMLTextAreaElement>) => setDescription(e.currentTarget.value),
-    []
-  );
+  const onChangeDescription = useCallback((description: string) => setDescription(description), []);
 
-  const onChangeType = useCallback((type: CrewCategry) => () => setType(type), []);
+  const onChangeImages = (image: string) => setImage(image);
 
-  const disabled = !!crewName.length && !!title.length && !!description.length;
+  const onChangeLocation = (location: Location[]) => setLocation(location);
 
-  return (
-    <Flex label="CreateCrew" direction="column" justifyContent="space-between" fullHeight>
-      <div>
-        <MB20>
-          <NavigationBar startIcon={<ArrowLeftIcon />} title="크루생성" />
-        </MB20>
-        <MB20>
-          <Padding>
-            <Flex label="CreateCrew-CategoryContainer" direction="column" gap={14}>
-              <Typography component="p" variant="subheadline1" weight="semibold">
-                카테고리
-              </Typography>
-              <Flex label="CreateCrew-CategoryContainer-CategoryButtonContainer" gap={2}>
-                <FlexItem grow={1}>
-                  <Button
-                    onClick={onChangeType(CREW_CATEGORY.플로깅)}
-                    fullWidth
-                    variant={type === CREW_CATEGORY.플로깅 ? 'outlined' : 'normal'}
-                    value={CREW_CATEGORY.플로깅}
-                  >
-                    플로깅
-                  </Button>
-                </FlexItem>
-                <FlexItem grow={1}>
-                  <Button
-                    onClick={onChangeType(CREW_CATEGORY.비치코밍)}
-                    fullWidth
-                    variant={type !== CREW_CATEGORY.플로깅 ? 'outlined' : 'normal'}
-                    value={CREW_CATEGORY.비치코밍}
-                  >
-                    비치코밍
-                  </Button>
-                </FlexItem>
-              </Flex>
-            </Flex>
-          </Padding>
-        </MB20>
-        <Padding>
-          <Flex label="CreateCrew-CrewInputContainer" direction="column" gap={14}>
-            <Typography component="p" variant="subheadline1" weight="semibold">
-              크루소개
-            </Typography>
-            <TextField value={crewName} onChange={onChangeCrewName} label="크루이름" fullWidth />
-            <TextField value={title} onChange={onChangeTitle} label="제목" fullWidth />
-            <TextField
-              value={description}
-              onChange={onChangeDescription}
-              label="크루를 소개해 주세요."
-              rows={6}
-              fullWidth
-              multiline
-            />
-          </Flex>
-        </Padding>
-      </div>
+  const onNext = () =>
+    setTabIndex((prev) => {
+      const nextIndex = (prev + 1) as TabIndex;
+      if (TAB_INDEX.includes(nextIndex)) return nextIndex;
+      return prev;
+    });
 
-      <Button fullWidth disabled={!disabled}>
-        확인
-      </Button>
-    </Flex>
-  );
+  const Components = {
+    0: (
+      <CreateCrew_Intro
+        crewName={crewName}
+        title={title}
+        description={description}
+        image={image}
+        onChangeCrewName={onChangeCrewName}
+        onChangeTitle={onChangeTitle}
+        onChangeDescription={onChangeDescription}
+        onChangeImages={onChangeImages}
+        onNext={onNext}
+      />
+    ),
+    1: (
+      <CreateCrew_Location
+        location={location}
+        onChangeLocation={onChangeLocation}
+        onClick={() => {
+          console.log('g');
+        }}
+      />
+    ),
+  };
+
+  return <>{Components[tabIndex]}</>;
 };
 
 export default CreateCrew;
