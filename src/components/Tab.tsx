@@ -1,7 +1,7 @@
 import { Flex, FlexItem, Padding } from '@/ui';
 import styled from '@emotion/styled';
 import { useMemo } from 'react';
-import Typography from '../Typography';
+import Typography from './Typography';
 
 const TabIndicator = styled('div')<{ tabLength: number; tabIndex: number }>(({ tabIndex, tabLength }) => {
   return {

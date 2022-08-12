@@ -2,7 +2,7 @@ import ProfileIcon from '@/icons/ProfileIcon';
 import { Flex, FlexItem, Padding } from '@/ui';
 import styled from '@emotion/styled';
 import React from 'react';
-import Typography from '../Typography';
+import Typography from './Typography';
 
 const Container = styled(Flex)<{ border: boolean }>(({ border }) => ({
   borderBottom: border ? '1px solid #e6e6e6' : undefined,

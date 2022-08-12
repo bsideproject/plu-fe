@@ -1,8 +1,8 @@
 import { ArrowRightIcon } from '@/icons';
 import { Flex } from '@/ui';
 import styled from '@emotion/styled';
-import IconButton from '../IconButton';
-import Typography from '../Typography';
+import IconButton from './IconButton';
+import Typography from './Typography';
 
 const Container = styled('div')<{ bb: boolean }>(({ bb }) => ({
   borderBottom: bb ? '1px solid #F1F1F1' : undefined,
