@@ -1,50 +1,48 @@
-import { Button, DatePicker, Gathering, NavigationBar, Typography } from '@/components';
+import { DatePicker } from '@/components';
+import CreateGathering_Main from '@/components/Crew/Gathering/CreateGathering_Main';
+import CreateGathering_Place from '@/components/Crew/Gathering/CreateGathering_Place';
 import Dialog from '@/components/Dialog';
-import TextField from '@/components/TextField';
 import TimePicker from '@/components/TimePicker';
-import { ArrowLeftIcon, MinusIcon, PlusIcon } from '@/icons';
-import { Flex, MB20, Padding } from '@/ui';
 import CustomDate from '@/utils/CustomDate/CustomDate';
-import { shouldForwardProp } from '@/utils/emotion';
-import styled from '@emotion/styled';
 import { ChangeEvent, useEffect, useState } from 'react';
 
 const label = 'CrewCreateGathering';
 
 const MAX_COUNT = 20;
 
-const IconButton = styled('div', {
-  shouldForwardProp: shouldForwardProp(['left', 'right']),
-})<{ left?: number; right?: number }>(({ left, right }) => ({
-  position: 'absolute',
-  top: `${(60 - 24) / 2}px`,
-  zIndex: 9999,
-  left: left,
-  right: right,
-}));
-
 interface Dialog {
   date: { open: boolean };
   time: { open: boolean };
-  place: { open: boolean };
 }
 
-type DialogType = keyof Dialog;
+export type DialogType = keyof Dialog;
 
 const DIALOG: Dialog = {
   date: { open: false },
   time: { open: false },
-  place: { open: false },
+};
+
+export type Place = {
+  lat: number;
+  lon: number;
+  name: string;
+  address: string;
 };
 
 const CrewCreateGathering = () => {
   const [name, setName] = useState('');
   const [count, setCount] = useState(0);
   const [date, setDate] = useState(new Date());
+  const [place, setPlace] = useState<Place>({
+    lat: 123.123,
+    lon: 123.123,
+    name: '서울',
+    address: '서울 어딘가',
+  });
 
   const [dialog, setDialog] = useState(DIALOG);
 
-  const dObject = new CustomDate(date);
+  const [tabIndex, setTabIndex] = useState<0 | 1>(0);
 
   const onChangeName = (e: ChangeEvent<HTMLTextAreaElement>) => setName(e.currentTarget.value);
 
@@ -70,6 +68,12 @@ const CrewCreateGathering = () => {
     setDialog((prev) => ({ ...prev, [type]: { open: false } }));
   };
 
+  const onNext = () => setTabIndex(1);
+
+  const onPrev = () => setTabIndex(0);
+
+  const onChangePlace = (newPlace: Place) => setPlace(newPlace);
+
   useEffect(() => {
     const dObject = new CustomDate();
     const minute = dObject.minute;
@@ -83,57 +87,23 @@ const CrewCreateGathering = () => {
 
   return (
     <>
-      <Flex label={label} direction="column" justifyContent="space-between" fullHeight>
-        <div>
-          <MB20>
-            <NavigationBar startIcon={<ArrowLeftIcon />} title="모임개설" />
-          </MB20>
-          <MB20>
-            <Padding>
-              <Flex direction="column" gap={14}>
-                <Typography component="p" variant="subheadline1" weight="semibold">
-                  모임소개
-                </Typography>
-                <TextField value={name} onChange={onChangeName} label="모임이름" />
-              </Flex>
-            </Padding>
-          </MB20>
-          <MB20>
-            <Padding>
-              <div style={{ position: 'relative' }}>
-                <IconButton left={10} onClick={onCountDown}>
-                  <MinusIcon />
-                </IconButton>
-                <TextField value={count} onChange={onChangeCount} textAlign="center" fullWidth />
-                <IconButton right={10} onClick={onCountUp}>
-                  <PlusIcon />
-                </IconButton>
-              </div>
-            </Padding>
-          </MB20>
-          <Padding>
-            <Typography component="p" variant="subheadline1" weight="semibold">
-              모임정보
-            </Typography>
-          </Padding>
-          <Padding>
-            <Gathering label="시간" text={dObject.format('A HH:mm')} onClick={onOpenDialog('time')} />
-            <Gathering label="날짜" text={dObject.format('YYYY년 MM월 DD일')} onClick={onOpenDialog('date')} />
-            <Gathering
-              label="장소"
-              bb={false}
-              text="???"
-              onClick={() => {
-                window.console.log('#Dialog open');
-              }}
-            />
-          </Padding>
-        </div>
+      {tabIndex === 0 && (
+        <CreateGathering_Main
+          date={date}
+          label={label}
+          name={name}
+          count={count}
+          place={place}
+          onChangeName={onChangeName}
+          onChangeCount={onChangeCount}
+          onCountDown={onCountDown}
+          onCountUp={onCountUp}
+          onOpenDialog={onOpenDialog}
+          onNext={onNext}
+        />
+      )}
 
-        <Button fullWidth disabled={false}>
-          확인
-        </Button>
-      </Flex>
+      {tabIndex === 1 && <CreateGathering_Place place={place} onChangePlace={onChangePlace} onPrev={onPrev} />}
 
       {dialog.date.open && (
         <Dialog open={dialog.date.open} onClose={onCloseDialog('date')}>
