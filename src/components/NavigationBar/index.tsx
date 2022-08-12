@@ -31,7 +31,9 @@ const NavigationBar = (props: NavigationBarProps) => {
           <IconButton onClick={onClickStartIcon}>{startIcon ? startIcon : endIcon}</IconButton>
         </Hidden>
       )}
-      <NavigationBarTypography textAlign="center">{title}</NavigationBarTypography>
+      <NavigationBarTypography weight="semibold" textAlign="center">
+        {title}
+      </NavigationBarTypography>
       {icon && (
         <Hidden hidden={!endIcon}>
           <IconButton onClick={onClickEndIcon}>{endIcon ? endIcon : startIcon}</IconButton>
