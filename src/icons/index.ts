@@ -3,21 +3,27 @@ import ArrowDownIcon from './ArrowDownIcon';
 import ArrowLeftIcon from './ArrowLeftIcon';
 import ArrowRightIcon from './ArrowRightIcon';
 import ArrowUpIcon from './ArrowUpIcon';
+import GpsIcon from './GpsIcon';
 import KakaoIcon from './KakaoIcon';
 import MinusIcon from './MinusIcon';
 import NaverIcon from './NaverIcon';
+import PersonIcon from './PersonIcon';
 import PlusIcon from './PlusIcon';
+import ProfileIcon from './ProfileIcon';
 import SettingIcon from './SettingIcon';
 
 export {
   AppleIcon,
-  ArrowLeftIcon,
-  KakaoIcon,
-  NaverIcon,
-  SettingIcon,
-  PlusIcon,
-  MinusIcon,
-  ArrowRightIcon,
   ArrowDownIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
   ArrowUpIcon,
+  GpsIcon,
+  KakaoIcon,
+  MinusIcon,
+  NaverIcon,
+  PersonIcon,
+  PlusIcon,
+  ProfileIcon,
+  SettingIcon,
 };
