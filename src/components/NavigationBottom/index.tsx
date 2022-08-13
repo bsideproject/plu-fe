@@ -2,9 +2,9 @@ import { NavigationIcon } from '@/icons';
 import { Flex } from '@/ui';
 import { shouldForwardProp } from '@/utils/emotion';
 import styled from '@emotion/styled';
+import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 import Typography from '../Typography';
-import { NavigationBottomData, NavigationBottomProps } from './types';
 
 const Container = styled('div', {
   shouldForwardProp: shouldForwardProp(['size']),
@@ -15,40 +15,67 @@ const Container = styled('div', {
   paddingBottom: 16,
 }));
 
-const DATA: NavigationBottomData[] = [
-  {
-    icon: <NavigationIcon />,
-    text: '홈',
-  },
-  {
-    icon: <NavigationIcon />,
-    text: '랭킹',
-  },
-  {
-    icon: <NavigationIcon />,
-    text: '아티클',
-  },
-  {
-    icon: <NavigationIcon />,
-    text: '기록',
-  },
-  {
-    icon: <NavigationIcon />,
-    text: '마이',
-  },
-];
+const NavigationBottom = () => {
+  const router = useRouter();
 
-const NavigationBottom = (props: NavigationBottomProps) => {
-  const { data = DATA } = props;
+  const DATA = useMemo(
+    () => [
+      {
+        icon: <NavigationIcon />,
+        text: '홈',
+        onClick: () => {
+          router.push('/');
+        },
+      },
+      {
+        icon: <NavigationIcon />,
+        text: '랭킹',
+        onClick: () => {
+          router.push('/rank');
+        },
+      },
+      {
+        icon: <NavigationIcon />,
+        text: '아티클',
+        onClick: () => {
+          return;
+          router.push('/article');
+        },
+      },
+      {
+        icon: <NavigationIcon />,
+        text: '기록',
+        onClick: () => {
+          return;
+          router.push('/history');
+        },
+      },
+      {
+        icon: <NavigationIcon />,
+        text: '마이',
+        onClick: () => {
+          router.push('/mypage');
+        },
+      },
+    ],
+    [router]
+  );
 
-  const size = useMemo(() => data.length, [data.length]);
+  const size = useMemo(() => DATA.length, [DATA.length]);
 
   return (
     <Container size={size}>
-      {data.map((item, index) => {
-        const { icon, text } = item;
+      {DATA.map((item, index) => {
+        const { icon, text, onClick } = item;
         return (
-          <Flex key={index} direction="column" alignItems={'center'} justifyContent="space-around" height={60}>
+          <Flex
+            onClick={onClick}
+            key={index}
+            direction="column"
+            alignItems={'center'}
+            justifyContent="space-around"
+            height={60}
+          >
             {icon}
             <Typography color="#007AFF">{text}</Typography>
           </Flex>
