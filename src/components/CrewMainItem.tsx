@@ -1,4 +1,4 @@
-import { GpsIcon, PersonIcon } from '@/icons';
+import { PersonIcon } from '@/icons';
 import { Flex, FlexItem, MB20, Padding } from '@/ui';
 import styled from '@emotion/styled';
 import Typography from './Typography';
@@ -27,7 +27,6 @@ const CrewMainItem = () => {
           <Flex direction="column" gap={10}>
             <FlexItem>
               <Flex alignItems={'center'} gap={10}>
-                <GpsIcon />
                 <Typography>서울숨 야간 플로깅</Typography>
               </Flex>
             </FlexItem>
