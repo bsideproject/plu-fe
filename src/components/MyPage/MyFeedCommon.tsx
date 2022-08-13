@@ -1,5 +1,15 @@
 import { Button, Typography } from '@/components';
 import { Flex, FlexItem, MainLayout, MB20 } from '@/ui';
+import styled from '@emotion/styled';
+
+const ImageItem = styled('div')<{ image: string }>(({ image }) => ({
+  width: 50,
+  height: 50,
+  backgroundImage: `url(${image})`,
+  backgroundRepeat: 'no-repeat',
+  backgroundSize: 'cover',
+  borderRadius: 8,
+}));
 
 interface Props {
   profileImage: string;
@@ -21,7 +31,7 @@ const MyFeedCommon = (props: Props) => {
       <MB20>
         <MainLayout inner>
           <Flex gap={10} alignItems="center">
-            <div>프로필 이미지</div>
+            <ImageItem image={profileImage} />
             <FlexItem>
               <Flex gap={10} direction="column">
                 <Typography variant="subheadline1" weight="semibold">
