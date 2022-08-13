@@ -5,7 +5,7 @@ import TextField from '@/components/TextField';
 import Typography from '@/components/Typography';
 import { ArrowLeftIcon, MinusIcon, PlusIcon } from '@/icons';
 import { DialogType, Place } from '@/pages/crew/create_gathering';
-import { Flex, MB20, Padding } from '@/ui';
+import { Flex, MainLayout, MB20, Padding } from '@/ui';
 import CustomDate from '@/utils/CustomDate/CustomDate';
 import { shouldForwardProp } from '@/utils/emotion';
 import styled from '@emotion/styled';
@@ -45,7 +45,7 @@ const CreateGathering_Main = (props: Props) => {
 
   return (
     <Flex label={label} direction="column" justifyContent="space-between" fullHeight>
-      <div>
+      <MainLayout inner>
         <MB20>
           <NavigationBar startIcon={<ArrowLeftIcon />} title="모임개설" />
         </MB20>
@@ -60,6 +60,11 @@ const CreateGathering_Main = (props: Props) => {
           </Padding>
         </MB20>
         <MB20>
+          <Padding>
+            <Typography component="p" variant="subheadline1" weight="semibold">
+              모집인원
+            </Typography>
+          </Padding>
           <Padding>
             <div style={{ position: 'relative' }}>
               <IconButton left={10} onClick={onCountDown}>
@@ -82,11 +87,13 @@ const CreateGathering_Main = (props: Props) => {
           <Gathering label="날짜" text={dObject.format('YYYY년 MM월 DD일')} onClick={onOpenDialog('date')} />
           <Gathering label="장소" bb={false} text={place.name} onClick={onNext} />
         </Padding>
-      </div>
+      </MainLayout>
 
-      <Button fullWidth disabled={false}>
-        확인
-      </Button>
+      <div style={{ padding: '0 16px 20px' }}>
+        <Button fullWidth disabled={false}>
+          확인
+        </Button>
+      </div>
     </Flex>
   );
 };

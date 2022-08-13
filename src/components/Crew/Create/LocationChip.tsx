@@ -11,12 +11,12 @@ const Container = styled(FlexItem)(() => ({
 }));
 
 interface Props {
-  text: string;
-  onRemove: () => void;
+  text?: string;
+  onRemove?: () => void;
 }
 
 const LocatinoChip = (props: Props) => {
-  const { text, onRemove } = props;
+  const { text = '', onRemove = () => {} } = props;
 
   return (
     <Container>

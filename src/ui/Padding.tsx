@@ -15,7 +15,7 @@ const Padding = styled('div', {
 
   if (noLRPadding) return { padding: '8px 0' };
   if (noTBPadding) return { padding: '0 8px' };
-  return 8;
+  return { padding: 8 };
 });
 
 export default Padding;
