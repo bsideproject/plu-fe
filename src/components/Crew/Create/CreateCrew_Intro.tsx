@@ -57,14 +57,17 @@ const CreateCrew_Intro = (props: Props) => {
 
   const onChangeCrewName = useCallback(
     (e: ChangeEvent<HTMLTextAreaElement>) => _onChangeCrewName(e.currentTarget.value),
-    []
+    [_onChangeCrewName]
   );
 
-  const onChangeTitle = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => _onChangeTitle(e.currentTarget.value), []);
+  const onChangeTitle = useCallback(
+    (e: ChangeEvent<HTMLTextAreaElement>) => _onChangeTitle(e.currentTarget.value),
+    [_onChangeTitle]
+  );
 
   const onChangeDescription = useCallback(
     (e: ChangeEvent<HTMLTextAreaElement>) => _onChangeDescription(e.currentTarget.value),
-    []
+    [_onChangeDescription]
   );
 
   const disabled = !!crewName.length && !!title.length && !!description.length;

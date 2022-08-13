@@ -2,9 +2,9 @@ import { ArrowDownIcon, ArrowUpIcon } from '@/icons';
 import { Flex, FlexItem, MB20, Padding } from '@/ui';
 import CustomDate from '@/utils/CustomDate/CustomDate';
 import { useState } from 'react';
-import Button from '../Button';
-import IconButton from '../IconButton';
-import Typography from '../Typography';
+import Button from './Button';
+import IconButton from './IconButton';
+import Typography from './Typography';
 
 interface Props {
   value: Date;
