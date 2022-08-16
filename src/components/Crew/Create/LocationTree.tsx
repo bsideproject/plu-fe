@@ -185,6 +185,8 @@ const LOCATION_DATA: LocationData = {
 
 const Container = styled(Flex)(() => ({
   borderTop: '1px solid #F5F5F5',
+  overflowY: 'scroll',
+  maxHeight: '65vh',
 }));
 
 const CityItem = styled(FlexItem)<{ selected?: boolean }>(({ selected = false }) => ({

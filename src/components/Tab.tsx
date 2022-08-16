@@ -19,10 +19,11 @@ interface Props {
   tabNames: string[];
   tabIndex: number;
   onChangeTabIndex: (tabIndex: number) => void;
+  tabPadding?: number;
 }
 
 const Tab = (props: Props) => {
-  const { tabNames, tabIndex, onChangeTabIndex } = props;
+  const { tabNames, tabIndex, onChangeTabIndex, tabPadding } = props;
 
   const tabLength = useMemo(() => tabNames.length, [tabNames]);
 
@@ -31,9 +32,14 @@ const Tab = (props: Props) => {
       <Flex justifyContent={'space-between'}>
         {tabNames.map((name, index) => {
           return (
-            <FlexItem onClick={() => onChangeTabIndex(index)} grow={1} key={`${name}-${index}`}>
+            <FlexItem
+              style={{ padding: tabPadding }}
+              onClick={() => onChangeTabIndex(index)}
+              grow={1}
+              key={`${name}-${index}`}
+            >
               <Padding>
-                <Typography component="p" textAlign="center">
+                <Typography component="p" textAlign="center" weight={tabIndex === index ? 'semibold' : undefined}>
                   {name}
                 </Typography>
               </Padding>

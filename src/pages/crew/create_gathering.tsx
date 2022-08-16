@@ -110,8 +110,9 @@ const CrewCreateGathering = () => {
           <DatePicker
             date={date}
             onChange={(date) => {
+              window.console.log('dmdkr?');
               onChangeDate(date);
-              onCloseDialog('date');
+              onCloseDialog('date')();
             }}
           />
         </Dialog>
@@ -123,7 +124,7 @@ const CrewCreateGathering = () => {
             value={date}
             onChange={(date) => {
               onChangeDate(date);
-              onCloseDialog('time');
+              onCloseDialog('time')();
             }}
           />
         </Dialog>

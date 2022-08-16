@@ -7,6 +7,7 @@ import GpsIcon from './GpsIcon';
 import KakaoIcon from './KakaoIcon';
 import MinusIcon from './MinusIcon';
 import NaverIcon from './NaverIcon';
+import NavigationIcon from './NavigationIcon';
 import PersonIcon from './PersonIcon';
 import PlusIcon from './PlusIcon';
 import ProfileIcon from './ProfileIcon';
@@ -22,6 +23,7 @@ export {
   KakaoIcon,
   MinusIcon,
   NaverIcon,
+  NavigationIcon,
   PersonIcon,
   PlusIcon,
   ProfileIcon,
