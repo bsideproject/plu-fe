@@ -5,10 +5,12 @@ import Typography from './Typography';
 
 const ImageItem = styled('div')<{ image: string }>(({ image }) => ({
   width: '100%',
-  height: '30vh',
+  height: 0,
+  paddingBottom: '60%',
   backgroundImage: `url(${image})`,
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
+  backgroundPosition: 'center',
   borderRadius: 8,
 }));
 
