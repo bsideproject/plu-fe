@@ -38,7 +38,6 @@ const NavigationBottom = () => {
         icon: <NavigationIcon />,
         text: '아티클',
         onClick: () => {
-          return;
           router.push('/article');
         },
       },
@@ -46,7 +45,6 @@ const NavigationBottom = () => {
         icon: <NavigationIcon />,
         text: '기록',
         onClick: () => {
-          return;
           router.push('/history');
         },
       },
