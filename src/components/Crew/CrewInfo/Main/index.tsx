@@ -1,7 +1,8 @@
 import Button from '@/components/Button';
 import Typography from '@/components/Typography';
-import { Flex, FlexItem, Padding } from '@/ui';
+import { Flex, FlexItem, MB20, Padding } from '@/ui';
 import styled from '@emotion/styled';
+import Schedule from './Schedule';
 
 // ...
 
@@ -44,14 +45,70 @@ const CrewInfoMain = () => {
           >
             <Flex fullHeight direction="column">
               <FlexItem>
-                <Typography variant="headline" component="p">
-                  잠원 한강 플로깅
-                </Typography>
+                <MB20>
+                  <Typography weight="semibold" variant="headline" component="p">
+                    잠원 한강 플로깅
+                  </Typography>
+                </MB20>
                 <Typography component="p">안녕하세요. 반가워요!</Typography>
                 <Typography component="p">같이 잠원 한강공원에서 즐겁게 플로깅해요!</Typography>
               </FlexItem>
-              <FlexItem grow={1}>
-                <Typography>일정</Typography>
+              <FlexItem grow={1} style={{ paddingTop: 40 }}>
+                <div style={{ marginBottom: 20 }}>
+                  <Typography weight="semibold" variant="subheadline1">
+                    일정
+                  </Typography>
+                </div>
+                <MB20>
+                  <Schedule
+                    date={new Date()}
+                    totalCount={4}
+                    currentCount={2}
+                    onClick={() => {
+                      window.console.log('신청!');
+                    }}
+                  />
+                </MB20>
+                <MB20>
+                  <Schedule
+                    date={new Date()}
+                    totalCount={4}
+                    currentCount={2}
+                    onClick={() => {
+                      window.console.log('신청!');
+                    }}
+                  />
+                </MB20>
+                <MB20>
+                  <Schedule
+                    date={new Date()}
+                    totalCount={4}
+                    currentCount={2}
+                    onClick={() => {
+                      window.console.log('신청!');
+                    }}
+                  />
+                </MB20>
+                <MB20>
+                  <Schedule
+                    date={new Date()}
+                    totalCount={4}
+                    currentCount={2}
+                    onClick={() => {
+                      window.console.log('신청!');
+                    }}
+                  />
+                </MB20>
+                <MB20>
+                  <Schedule
+                    date={new Date()}
+                    totalCount={4}
+                    currentCount={2}
+                    onClick={() => {
+                      window.console.log('신청!');
+                    }}
+                  />
+                </MB20>
               </FlexItem>
             </Flex>
           </FlexItem>
