@@ -1,7 +1,9 @@
 import { Button, Typography } from '@/components';
 import { AppleIcon, KakaoIcon, NaverIcon } from '@/icons';
-import { MainLayout } from '@/ui';
+import { Flex, MainLayout, MB20 } from '@/ui';
 import styled from '@emotion/styled';
+
+// ...
 
 const Container = styled('div')(() => ({
   height: '100%',
@@ -13,14 +15,7 @@ const Container = styled('div')(() => ({
 const MainContainer = styled('div')(() => ({
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'center',
-}));
-
-const TmpImg = styled('div')(() => ({
-  width: 150,
-  height: 150,
-  background: 'pink',
-  marginBottom: 30,
+  marginLeft: 20,
 }));
 
 const LoginButtonGroup = styled('div')(() => ({
@@ -29,19 +24,34 @@ const LoginButtonGroup = styled('div')(() => ({
   gap: 4,
 }));
 
+const MainLogoText = styled(Typography)(() => ({
+  fontSize: 50,
+}));
+
 const Login = () => {
   return (
     <MainLayout>
       <Container>
         <div></div>
         <MainContainer>
-          <TmpImg />
-          <Typography>지금 플로그와</Typography>
-          <Typography>플로깅을 시작하세요!</Typography>
-          <Typography>환경보호 부터 건강까지</Typography>
+          <MB20>
+            <Flex direction="column" gap={6}>
+              <Typography weight="bold" variant="title3" component="p">
+                함께 달리고, 줍고, 지키는
+              </Typography>
+              <Typography weight="bold" variant="title3" component="p">
+                플로깅 커뮤니티
+              </Typography>
+            </Flex>
+          </MB20>
+          <MainLogoText color="#19C885" weight="bold" variant="title2" component="p">
+            TOPLO
+          </MainLogoText>
         </MainContainer>
+        <div></div>
+        <div></div>
         <LoginButtonGroup>
-          <Button startIcon={<KakaoIcon />} bgColor={'#FFE446'}>
+          <Button startIcon={<KakaoIcon />} color="black" bgColor={'#FFE446'}>
             카카오톡 로그인
           </Button>
           <Button startIcon={<NaverIcon />} color="white" bgColor={'#03C75A'}>
