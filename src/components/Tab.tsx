@@ -36,6 +36,7 @@ const Tab = (props: Props) => {
               style={{ padding: tabPadding }}
               onClick={() => onChangeTabIndex(index)}
               grow={1}
+              width={'33.333%'}
               key={`${name}-${index}`}
             >
               <Padding>
