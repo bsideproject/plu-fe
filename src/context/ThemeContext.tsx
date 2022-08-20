@@ -16,7 +16,7 @@ interface Theme {
   color: Color;
 }
 
-type Action = {};
+type Action = Record<string, unknown>;
 
 type ThemeDispatch = Dispatch<Action>;
 
