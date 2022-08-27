@@ -1,5 +1,6 @@
 import { NavigationBottom, Typography } from '@/components';
 import CrewMainItem from '@/components/CrewMainItem';
+import CrewMyScheduleItem from '@/components/CrewMyScheduleItem';
 import { Flex, FlexItem, MainLayout, MB20, Padding } from '@/ui';
 import styled from '@emotion/styled';
 
@@ -49,11 +50,19 @@ const CrewHomePage = () => {
                   내 일정
                 </Typography>
               </Padding>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
-                {[1, 2, 3, 4, 5].map((item, key) => {
-                  return <CrewMainItem key={key} />;
-                })}
-              </div>
+              <MB20>
+                <Flex
+                  style={{
+                    overflowX: 'scroll',
+                    padding: 8,
+                  }}
+                  gap={10}
+                >
+                  {[1, 2, 3, 4, 5].map((item, key) => {
+                    return <CrewMyScheduleItem key={key} />;
+                  })}
+                </Flex>
+              </MB20>
             </FlexItem>
             <FlexItem>
               <Padding>
