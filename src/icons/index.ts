@@ -5,6 +5,7 @@ import ArrowRightIcon from './ArrowRightIcon';
 import ArrowUpIcon from './ArrowUpIcon';
 import GpsIcon from './GpsIcon';
 import KakaoIcon from './KakaoIcon';
+import LogoIcon from './LogoIcon';
 import MinusIcon from './MinusIcon';
 import NaverIcon from './NaverIcon';
 import NavigationIcon from './NavigationIcon';
@@ -28,4 +29,5 @@ export {
   PlusIcon,
   ProfileIcon,
   SettingIcon,
+  LogoIcon,
 };
