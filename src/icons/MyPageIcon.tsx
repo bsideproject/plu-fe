@@ -6,8 +6,8 @@ const MyPageIcon = () => {
         fill="#666666"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M12 14C18.0751 14 23 16.9249 23 23C23 23.3539 22.9253 23.6872 22.7847 23.9998H1.21527C1.07466 23.6872 1 23.3539 1 23C1 16.9249 5.92487 14 12 14Z"
         fill="#666666"
       />
