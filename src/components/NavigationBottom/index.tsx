@@ -1,9 +1,9 @@
-import { NavigationIcon } from '@/icons';
+import { ArticleIcon, HomeIcon, MyPageIcon, RankIcon, RecordIcon } from '@/icons';
 import { Flex } from '@/ui';
 import { shouldForwardProp } from '@/utils/emotion';
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import Typography from '../Typography';
 
 const Container = styled('div', {
@@ -21,39 +21,44 @@ const NavigationBottom = () => {
   const DATA = useMemo(
     () => [
       {
-        icon: <NavigationIcon />,
+        icon: <HomeIcon color={router.pathname === '/home' ? '#666' : undefined} />,
         text: '홈',
         onClick: () => {
-          router.push('/');
+          router.push('/home');
         },
+        color: router.pathname === '/home' ? '#666' : '#E6E6E6',
       },
       {
-        icon: <NavigationIcon />,
+        icon: <RankIcon color={router.pathname === '/rank' ? '#666' : undefined} />,
         text: '랭킹',
         onClick: () => {
           router.push('/rank');
         },
+        color: router.pathname === '/rank' ? '#666' : '#E6E6E6',
       },
       {
-        icon: <NavigationIcon />,
+        icon: <ArticleIcon color={router.pathname === '/article' ? '#666' : undefined} />,
         text: '아티클',
         onClick: () => {
           router.push('/article');
         },
+        color: router.pathname === '/article' ? '#666' : '#E6E6E6',
       },
       {
-        icon: <NavigationIcon />,
+        icon: <RecordIcon color={router.pathname === '/history' ? '#666' : undefined} />,
         text: '기록',
         onClick: () => {
           router.push('/history');
         },
+        color: router.pathname === '/history' ? '#666' : '#E6E6E6',
       },
       {
-        icon: <NavigationIcon />,
+        icon: <MyPageIcon color={router.pathname === '/mypage' ? '#666' : undefined} />,
         text: '마이',
         onClick: () => {
           router.push('/mypage');
         },
+        color: router.pathname === '/mypage' ? '#666' : '#E6E6E6',
       },
     ],
     [router]
@@ -64,7 +69,7 @@ const NavigationBottom = () => {
   return (
     <Container size={size}>
       {DATA.map((item, index) => {
-        const { icon, text, onClick } = item;
+        const { icon, text, onClick, color } = item;
         return (
           <Flex
             onClick={onClick}
@@ -75,7 +80,7 @@ const NavigationBottom = () => {
             height={60}
           >
             {icon}
-            <Typography color="#007AFF">{text}</Typography>
+            <Typography color={color}>{text}</Typography>
           </Flex>
         );
       })}
