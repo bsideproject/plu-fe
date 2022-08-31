@@ -13,6 +13,8 @@ import PersonIcon from './PersonIcon';
 import PlusIcon from './PlusIcon';
 import ProfileIcon from './ProfileIcon';
 import SettingIcon from './SettingIcon';
+import ToastConfirmIcon from './ToastConfirmIcon';
+import ToastErrorIcon from './ToastErrorIcon';
 
 export {
   AppleIcon,
@@ -30,4 +32,6 @@ export {
   ProfileIcon,
   SettingIcon,
   LogoIcon,
+  ToastErrorIcon,
+  ToastConfirmIcon,
 };
